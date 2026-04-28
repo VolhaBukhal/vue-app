@@ -1,61 +1,21 @@
-<script setup lang="ts">
+<script setup>
+const props = defineProps({
+  done: Boolean,
+  text: String,
+})
 
+const emit = defineEmits(['update:done'])
 </script>
 
 <template>
-    <h1></h1>
-
-    <form>
-
-    </form>
-
-</template>
-
-
-
-
-<!-- <script setup>
-import { ref } from 'vue'
-
-let id = 0
-
-const newTodo = ref('')
-const hideCompleted = ref(false)
-const todos = ref([
-  { id: id++, text: 'Изучить HTML', done: true },
-  { id: id++, text: 'Изучить JavaScript', done: true },
-  { id: id++, text: 'Изучить Vue', done: false }
-])
-
-function addTodo() {
-  todos.value.push({ id: id++, text: newTodo.value, done: false })
-  newTodo.value = ''
-}
-
-function removeTodo(todo) {
-  todos.value = todos.value.filter((t) => t !== todo)
-}
-</script>
-
-<template>
-  <form @submit.prevent="addTodo">
-    <input v-model="newTodo" required placeholder="new todo">
-    <button>Добавить задачу</button>
-  </form>
-  <ul>
-    <li v-for="todo in todos" :key="todo.id">
-      <input type="checkbox" v-model="todo.done">
-      <span :class="{ done: todo.done }">{{ todo.text }}</span>
-      <button @click="removeTodo(todo)">X</button>
-    </li>
-  </ul>
-  <button @click="hideCompleted = !hideCompleted">
-    {{ hideCompleted ? 'Показать все' : 'Скрыть выполненные' }}
-  </button>
+  <div class="list-item-left">
+    <input type="checkbox" :checked="done" @change="(e) => emit('update:done', e.target.checked)" />
+    <span :class="{ done: done }">{{ text }}</span>
+  </div>
 </template>
 
 <style>
 .done {
   text-decoration: line-through;
 }
-</style> -->
+</style>

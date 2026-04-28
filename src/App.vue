@@ -23,7 +23,6 @@ header {
   display: flex;
   justify-content: flex-start;
   width: 100%;
-  border: 2px solid red;
   position: fixed;
   top: 0;
   left: 0;
