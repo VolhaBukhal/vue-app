@@ -1,1 +1,0 @@
-<template>Test view</template>
